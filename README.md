@@ -8,7 +8,25 @@ Feeling _**lucky**_, but instead you're stuck at a boring house party, your pare
 ## Tech Stack
 ___
 * HTML/CSS 
-* Javascript - DOM 
+* Javascript - _**DOM**_
+* *Using DOM manipulation, I will...*
+* create a function that includes an event listener for when the buttons are clicked so that...
+
+
+→ 'game start' button on the start screen makes the start screen dissappear and opens the game screen
+
+→ 'reset' button on the game screen clears the text on the dice
+
+
+→'roll dice' button on the game screen starts the random number generator and displays those numbers on the dice
+* use array method to define winning combinations, losing combinations, and roll-again combinations
+* for loops with if/else if/else combinations to determine what happens when player wins, loses or has to roll again
+
+
+→ use innerText to display message (i.e. "You won!", "You lose!", "Roll again!")
+
+
+→ automatically clear text (aka invoke reset function) when player must roll again
 
 ## Wireframes
 ___
