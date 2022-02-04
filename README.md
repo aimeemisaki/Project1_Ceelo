@@ -14,10 +14,11 @@ ___
 ___
 * Start Screen / Instructions 
 
-![Start Screen](./spring_forward/unit1/projects/Wireframe_Draft_StartScreen.jpg)
+![Start Screen](./Wireframe_Draft_StartScreen.jpg)
+
 * Playing Screen
 
-![Game Screen](./spring_forward/unit1/projects/Wireframe_Draft_GameScreen.jpg)
+![Game Screen](./Wireframe_Draft_GameScreen.jpg)
 
 ## MVP Goals
 ___
