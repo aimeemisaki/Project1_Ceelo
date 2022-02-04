@@ -7,8 +7,8 @@ Feeling _**lucky**_, but instead you're stuck at a boring house party, your pare
 
 ## Tech Stack
 ___
-* HTML/CSS - Canvas
-* Javascript
+* HTML/CSS 
+* Javascript - DOM 
 
 ## Wireframes
 ___
@@ -22,9 +22,9 @@ ___
 
 ## MVP Goals
 ___
-* Render start screen/canvas that displays instructions that disasapears after clicking button to go to game screen
-* Render game screen/canvas with 3 dices
-* Render 3 random number generators (text inserted) for the dices that are bing rolled
+* Render start screen that displays instructions that disasapears after clicking button to go to game screen
+* Render game screen with 3 dices
+* Render 3 random number generators (text inserted) for the dices that are being rolled
 * Create conditional combinations for automatic win, automatic loss and roll again
 * Automatically reset game when player must roll again
 * Functional buttons to start and reset game
