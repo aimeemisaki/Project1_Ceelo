@@ -1,0 +1,17 @@
+body {
+    background-color: darkred;
+    text-align: center;
+}
+.dice-board {
+    margin:10px;
+}
+.square {
+    width: 100px;
+     height: 100px;
+     background-color: white;
+     border-color: black;
+     border-width: 10px;
+     display: inline-block;
+     color: black;
+     margin: 20px;
+}
