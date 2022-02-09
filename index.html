@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet"> 
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,29 +13,34 @@
     <title>Cee-Lo: The Good Ol' Game of Dice</title>
 </head>
 <body>
-<div class="ss-container">
-    <div class="ss-h1-container">
-        <h1 class="ss-h1">Cee-Lo: The Good Ol' Game of Dice</h1>
-    </div>
-    <div class="ss-h2-container">   
-        <h2 class="ss-h2">Instructions</h2>
-    </div> 
-    <div class ="ss-instructions-container">
-        <p class="ss-instructions">
+<div class="modal">
+    <div class="modal-content">
+          <span class="close">&times;</span>
+          <h1 class="ss-h1">Cee-Lo: The Good Ol' Game of Dice</h1>
+          <p class="intro">Feeling lucky, but instead you're stuck at a boring house party, your parents' house or a coworkers' get-together? <br>
+            Wish you had your set of dice on you, but forget them at home? <br>
+            Look no further! <br>
+            The timeless game of Cee-lo is right at your fingertips. <br>
+            Roll away!
+        </p>
+        <h2 class="ss-h2">How To Play</h2>
+        <p class="instructions">
+            Roll the 3 dices to get a combination of numbers. 
+            Ways To Win: 
             <ul>
-                How to Win:
-            </ul>
-            <ul> 
-                
+                <li></li>
             </ul>
         </p>
-    </div>
-    <button class="ss-start-button">Start Game!</button>
+          
+     </div>
 </div>
+
 <div class="gs-container">
+    <button class="gs-modal-button">Instructions</button>
     <div class="gs-h1-container">
         <h1 class="gs-h1">Cee-Lo: The Good Ol' Game of Dice</h1>
     </div>
+<div class="gs-main-container">
     <button class="gs-roll-button">Roll dice!</button> 
 </br>
     <div class="dice-board">
@@ -38,11 +48,14 @@
         <div id="1" class="square"></div>
         <div id="2" class="square"></div>
     </div>
+    <div class ="points-container"> 
+        <h2 class = "points-msg"></h2>
+    </div>
     <div class= "gs-msg-container">
         <h2 class="gs-msg"></h2>
     </div>
-    <button class="gs-reset-button">Reset</button>
-
+    <button class ="gs-reset-button" id="reset-button">Reset</button>
+</div>
 </div>
 
 <script type="text/javascript" src="script.js"></script>
