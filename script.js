@@ -199,6 +199,8 @@ function playersTurn () {
     }
 }
 console.log(currentPlayer)
+//Player 1 rolls a few turns and gets their points from each roll
+//then, player2 gets to be currentPlayer and rolls until their turn ends
 
 function npointResults() {
     if (player1 > player2) {
