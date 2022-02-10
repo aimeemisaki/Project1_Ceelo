@@ -1,9 +1,10 @@
 const closeButton = document.querySelector(".close");
 const modal = document.querySelector(".modal");
 const modalButton = document.querySelector(".gs-modal-button");
-const gameMessage = document.querySelector(".gs-msg");
+const gameMessage = document.querySelector(".game-msg");
 const pointMessage = document.querySelector(".points-msg");
 const playersTurnMessage = document.querySelector(".playersturn-msg");
+const winnerMessage = document.querySelector(".winner-msg");
 const dices = document.querySelectorAll(".square");
 const resetButton = document.querySelector("#reset-button");
 
@@ -58,6 +59,7 @@ buttonPlay.addEventListener("click", function () {
     player2Score(playNumbers);
     console.log("this is player2Numbers", playNumbers);
   }
+  //   playersTurn()
 });
 
 // Number to Image Conversion
@@ -117,32 +119,32 @@ const fivePoints = [
 // Automatic win, automic lose, n-points or roll again
 function gameResult(playNumbers) {
   if (autoWinningCombos.includes(playNumbers)) {
-    pointMessage.innerText = currentPlayer + " won!";
+    winnerMessage.innerText = currentPlayer + " won!";
     gameMessage.innerText = "Game Over!";
     buttonPlay.style.display = "none";
   } else if (autoLosingCombos.includes(playNumbers)) {
-    pointMessage.innerText = currentPlayer + " lost!";
+    winnerMessage.innerText = currentPlayer + " lost!";
     gameMessage.innerText = "Game Over!";
     buttonPlay.style.display = "none";
   } else if (twoPoints.includes(playNumbers)) {
-      playersTurn();
     npointResults();
+    playersTurn();
     pointMessage.innerText = "2 points!";
   } else if (twoPoints.includes(playNumbers)) {
-      playersTurn();
     npointResults();
+    playersTurn();
     pointMessage.innerText = "2 points!";
   } else if (threePoints.includes(playNumbers)) {
-      playersTurn();
     npointResults();
+    playersTurn();
     pointMessage.innerText = "3 points!";
   } else if (fourPoints.includes(playNumbers)) {
-      playersTurn();
     npointResults();
+    playersTurn();
     pointMessage.innerText = "4 points!";
   } else if (fivePoints.includes(playNumbers)) {
-      playersTurn();
     npointResults();
+    playersTurn();
     pointMessage.innerText = "5 points!";
   } else {
     gameMessage.innerText = "Roll again!";
@@ -198,26 +200,24 @@ let currentPlayer = "Player 1";
 function playersTurn() {
   if (player1 >= 2) {
     currentPlayer = "Player 2";
-    playersTurnMessage.innerText = "Next player's turn!";
   } else {
     currentPlayer = "Player 1";
+    playersTurnMessage.innerText = "Next player's turn!";
   }
 }
 console.log(currentPlayer);
-//Player 1 rolls a few turns and gets their points from each roll
-//then, player2 gets to be currentPlayer and rolls until their turn ends
 
 function npointResults() {
-  if (player1 > player2 && currentPlayer === "Player 2") {
-    // pointMessage.innerText = "Player 1 wins!";
-    gameMessage.innerText = "Player 1 wins!";
+  if (player2 > player1) {
+    winnerMessage.innerText = "Player 2 wins!";
+    gameMessage.innerText = "Game Over";
     buttonPlay.style.display = "none";
-  } else if (player2 > player1 && currentPlayer === "Player 2") {
-    // pointMessage.innerText = "Player 2 wins!";
-    gameMessage.innerText = "Player 2 wins!";
+  } else if (player1 > player2) {
+    winnerMessage.innerText = "Player 1 wins!";
+    gameMessage.innerText = "Game Over";
     buttonPlay.style.display = "none";
   } else if (player1 === player2 && player1 > 0 && player2 > 0) {
-    gameMessage.innerText = "Tie!";
+    winnerMessage.innerText = "Tie!";
     playersTurnMessage.innerText = "Both roll again!";
   }
   console.log(npointResults);
@@ -231,10 +231,6 @@ resetButton.addEventListener("click", function () {
   buttonPlay.style.display = "inline-block";
   gameMessage.innerText = "";
   pointMessage.innerText = "";
-//   let player1Score = 0
-//   let player2Score = 0
-
-
   //   buttonPlay.addEventListener("click", function () {
   //     dices.forEach(function (dice) {
   //       dice.innerText = diceNum();
