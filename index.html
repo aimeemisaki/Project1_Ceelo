@@ -13,23 +13,31 @@
     <title>Cee-Lo: The Good Ol' Game of Dice</title>
 </head>
 <body>
+<embed src="/game-music.mp3" loop="true" autostart="true" width="2" height="0">
 <div class="modal">
     <div class="modal-content">
           <span class="close">&times;</span>
-          <h1 class="ss-h1">Cee-Lo: The Good Ol' Game of Dice</h1>
-          <p class="intro">Feeling lucky, but instead you're stuck at a boring house party, your parents' house or a coworkers' get-together? <br>
+          <h2 class="ss-h1">Cee-Lo: The Good Ol' Game of Dice</h2>
+          <p class="intro">Feeling <i>lucky</i>, but instead you're stuck at a boring house party, your parents' home or a coworkers' get-together? <br>
             Wish you had your set of dice on you, but forget them at home? <br>
-            Look no further! <br>
+            <i>Look no further! </i><br>
             The timeless game of Cee-lo is right at your fingertips. <br>
             Roll away!
         </p>
         <h2 class="ss-h2">How To Play</h2>
         <p class="instructions">
-            Roll the 3 dices to get a combination of numbers. 
-            Ways To Win: 
-            <ul>
-                <li></li>
-            </ul>
+            Roll the 3 dices to get a combination of numbers. <br>
+            <div class="ss-title">Ways To Win:</div> <br>
+            🎲 Any double and a 6 (e.g. 3, 3, 6)<br>
+            🎲 A triple 6 (i.e. 6, 6, 6) <br>
+            🎲 4, 5, 6 <br>
+            <br>
+            <div class="ss-title">Ways to Lose:</div><br>
+            🎲 Any double and a 1 (e.g. 3, 3, 1)<br>
+            🎲 A triple 1<br>
+            🎲 1, 2, 3<br>
+            <br>
+            Until then... <i>Keep on rolling! </i>
         </p>
           
      </div>
@@ -57,7 +65,7 @@
     <button class ="gs-reset-button" id="reset-button">Reset</button>
 </div>
 </div>
-
+<audio id = "music" src = "./game-music.mp3"></audio>
 <script type="text/javascript" src="script.js"></script>
 </body>
 </html>

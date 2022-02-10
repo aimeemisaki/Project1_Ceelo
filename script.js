@@ -5,9 +5,7 @@ const gameMessage = document.querySelector(".gs-msg");
 const pointMessage = document.querySelector(".points-msg");
 const dices = document.querySelectorAll(".square");
 const resetButton = document.querySelector("#reset-button");
-let player1 = "";
-let player2 = "";
-let currentPlayer = "Player 1";
+
 
 const images = [
   "./dice1img.jpg",
@@ -53,6 +51,14 @@ buttonPlay.addEventListener("click", function () {
   });
   gameResult(parseInt(playNumbers));
   displayImage();
+  if (currentPlayer === "Player 1") {
+      player1Score(playNumbers);
+      console.log("this is player1Numbers", playNumbers)
+  } else if (currentPlayer === "Player 2") {
+      player2Score(playNumbers)
+      console.log("this is player2Numbers", playNumbers)
+  }
+playersTurn()
 });
 
 // Number to Image Conversion
@@ -120,74 +126,95 @@ function gameResult(playNumbers) {
     gameMessage.innerText = "Game Over!";
     buttonPlay.style.display = "none";
   } else if (twoPoints.includes(playNumbers)) {
+    npointResults();
     pointMessage.innerText = "2 points!";
-    if (currentPlayer === "Player 1") {
-      player1 = 2;
-      currentPlayer = "Player 2"
-    } else if (currentPlayer === "Player 2") {
-      player2 = 2;
-      npointResults()
-    }
-    gameMessage.innerText = "Next player's turn!";
-    currentPlayer = "Player 2";
+  } else if (twoPoints.includes(playNumbers)) {
+    npointResults();
+    pointMessage.innerText = "2 points!";
   } else if (threePoints.includes(playNumbers)) {
+    npointResults();
     pointMessage.innerText = "3 points!";
-    if (currentPlayer === "Player 1") {
-      player1 = 3;
-      currentPlayer = "Player 2"
-    } else if (currentPlayer === "Player 2") {
-      player2 = 3;
-      npointResults()
-    }
-    gameMessage.innerText = "Next player's turn!";
-    currentPlayer = "Player 2";
   } else if (fourPoints.includes(playNumbers)) {
+    npointResults();
     pointMessage.innerText = "4 points!";
-    if (currentPlayer === "Player 1") {
-      player1 += 4;
-      currentPlayer = "Player 2"
-    } else if (currentPlayer === "Player 2") {
-      player2 = 4;
-      npointResults()
-    }
-    gameMessage.innerText = "Next player's turn!";
-    currentPlayer = "Player 2";
   } else if (fivePoints.includes(playNumbers)) {
+    npointResults();
     pointMessage.innerText = "5 points!";
-    if (currentPlayer === "Player 1") {
-      player1 = 5;
-      currentPlayer = "Player 2"
-    } else if (currentPlayer === "Player 2") {
-      player2 = 5;
-      npointResults()
-    }
-    gameMessage.innerText = "Next player's turn!";
-    currentPlayer = "Player 2";
   } else {
     gameMessage.innerText = "Roll again!";
-    // pointMessage.style.display = "none";
+    pointMessage.style.visibility = "hidden";
+  }
+  if (pointMessage.style.visibility == "hidden") {
+    pointMessage.style.visibility = "visible";
   }
 }
 
-function npointResults() {
-    if (player1 > player2) {
-    pointMessage.innerText = "Player 1 wins!"
-    gameMessage.innerText = "Game Over"
-    buttonPlay.style.display = "none"
-} else if (player2 > player1) {
-    pointMessage.innerText = "Player 2 wins!"
-    gameMessage.innerText = "Game Over"
-    buttonPlay.style.display = "none"
-} else if (player1 === player2) {
-    pointMessage.innerText = "Tie!"
-    gameMessage.innerText = "Both roll again!"
-}
+let player1 = 0
+let player2 = 0
+
+
+// Based on conditionals, add points to properties in gamestate :
+
+// when player 1 gets n-points
+function player1Score (player1Numbers) {
+    console.log("this is player1 numbers", player1Numbers)
+    console.log(typeof player1Numbers)
+    if (twoPoints.includes(parseInt(player1Numbers))) {
+        console.log("does this work")
+        player1 += 2
+    } else if (threePoints.includes(parseInt(player1Numbers))) {
+        console.log("does this work")
+        player1 += 3
+    } else if (fourPoints.includes(parseInt(player1Numbers))) {
+        console.log("does this work")
+        player1 += 4
+    } else if (fivePoints.includes(parseInt(player1Numbers))) {
+        console.log("does this work")
+        player1 += 5
+    } console.log(player1)
 }
 
-// create a conditional that compares player 1 and player 2 values
-// condition where currentPlayer = 2 && player2 > 0
-// --> display winner in the gameMessage
-// --> hide Roll button
+// when player 2 gets n-points
+function player2Score (player2Numbers) {
+    console.log("this is player2 numbers", player2Numbers)
+    if (twoPoints.includes(parseInt(player2Numbers))) {
+        player2 += 2
+    } else if (threePoints.includes(parseInt(player2Numbers))) {
+        player2 += 3
+    } else if (fourPoints.includes(parseInt(player2Numbers))) {
+        player2 += 4
+    } else if (fivePoints.includes(parseInt(player2Numbers))) {
+        player2 += 5
+    } console.log(player2)
+}
+
+// From Player 1 to Player 2
+let currentPlayer = "Player 1"
+function playersTurn () {
+    if (player1 >= 2) {
+        currentPlayer = "Player 2"
+        gameMessage.innerText = "Next player's turn!";
+    } else {
+        currentPlayer = "Player 1"
+    }
+}
+console.log(currentPlayer)
+
+function npointResults() {
+    if (player1 > player2) {
+    pointMessage.innerText = "Player 1 wins!";
+    gameMessage.innerText = "Game Over";
+    buttonPlay.style.display = "none";
+  } else if (player2 > player1) {
+    pointMessage.innerText = "Player 2 wins!";
+    gameMessage.innerText = "Game Over";
+    buttonPlay.style.display = "none";
+  } else if (player1 === player2 && player1 >0 && player2>0) {
+    pointMessage.innerText = "Tie!";
+    gameMessage.innerText = "Both roll again!";
+  } console.log(npointResults)
+}
+
 
 //Reset Button
 resetButton.addEventListener("click", function () {
@@ -196,10 +223,16 @@ resetButton.addEventListener("click", function () {
   });
   buttonPlay.style.display = "inline-block";
   gameMessage.innerText = "";
-  pointMessage.innerText = ""
+  pointMessage.innerText = "";
   //   buttonPlay.addEventListener("click", function () {
   //     dices.forEach(function (dice) {
   //       dice.innerText = diceNum();
   //     })
   // })
 });
+
+// const music = document.querySelector(".music")
+// music.play();
+// music.autoplay = true;
+// music.load();
+// music.loop =true;
