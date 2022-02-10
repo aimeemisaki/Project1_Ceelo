@@ -200,15 +200,19 @@ let currentPlayer = "Player 1";
 function playersTurn() {
   if (player1 >= 2) {
     currentPlayer = "Player 2";
+    playersTurnMessage.innerText = "Player 1's turn!";
   } else {
     currentPlayer = "Player 1";
-    playersTurnMessage.innerText = "Next player's turn!";
+    playersTurnMessage.innerText = "Player 2's turn!";
   }
 }
 console.log(currentPlayer);
 
 function npointResults() {
-  if (player2 > player1) {
+  if (player1 === player2 && player1 > 0 && player2 > 0) {
+    winnerMessage.innerText = "Tie!";
+    playersTurnMessage.innerText = "Both roll again!";
+  } else if (player2 > player1) {
     winnerMessage.innerText = "Player 2 wins!";
     gameMessage.innerText = "Game Over";
     buttonPlay.style.display = "none";
@@ -216,9 +220,6 @@ function npointResults() {
     winnerMessage.innerText = "Player 1 wins!";
     gameMessage.innerText = "Game Over";
     buttonPlay.style.display = "none";
-  } else if (player1 === player2 && player1 > 0 && player2 > 0) {
-    winnerMessage.innerText = "Tie!";
-    playersTurnMessage.innerText = "Both roll again!";
   }
   console.log(npointResults);
 }
