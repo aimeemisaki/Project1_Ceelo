@@ -54,12 +54,9 @@ buttonPlay.addEventListener("click", function () {
   displayImage();
   if (currentPlayer === "Player 1") {
     player1Score(playNumbers);
-    console.log("this is player1Numbers", playNumbers);
   } else if (currentPlayer === "Player 2") {
     player2Score(playNumbers);
-    console.log("this is player2Numbers", playNumbers);
   }
-  //   playersTurn()
 });
 
 // Number to Image Conversion
@@ -158,12 +155,8 @@ function gameResult(playNumbers) {
 let player1 = 0;
 let player2 = 0;
 
-// Based on conditionals, add points to properties in gamestate :
-
 // when player 1 gets n-points
 function player1Score(player1Numbers) {
-  console.log("this is player1 numbers", player1Numbers);
-  console.log(typeof player1Numbers);
   if (twoPoints.includes(parseInt(player1Numbers))) {
     console.log("does this work");
     player1 += 2;
@@ -177,12 +170,10 @@ function player1Score(player1Numbers) {
     console.log("does this work");
     player1 += 5;
   }
-  console.log(player1);
 }
 
 // when player 2 gets n-points
 function player2Score(player2Numbers) {
-  console.log("this is player2 numbers", player2Numbers);
   if (twoPoints.includes(parseInt(player2Numbers))) {
     player2 += 2;
   } else if (threePoints.includes(parseInt(player2Numbers))) {
@@ -192,7 +183,6 @@ function player2Score(player2Numbers) {
   } else if (fivePoints.includes(parseInt(player2Numbers))) {
     player2 += 5;
   }
-  console.log(player2);
 }
 
 // From Player 1 to Player 2
@@ -221,7 +211,6 @@ function npointResults() {
     gameMessage.innerText = "Game Over";
     buttonPlay.style.display = "none";
   }
-  console.log(npointResults);
 }
 
 //Reset Button
@@ -232,15 +221,5 @@ resetButton.addEventListener("click", function () {
   buttonPlay.style.display = "inline-block";
   gameMessage.innerText = "";
   pointMessage.innerText = "";
-  //   buttonPlay.addEventListener("click", function () {
-  //     dices.forEach(function (dice) {
-  //       dice.innerText = diceNum();
-  //     })
-  // })
+  
 });
-
-// const music = document.querySelector(".music")
-// music.play();
-// music.autoplay = true;
-// music.load();
-// music.loop =true;
