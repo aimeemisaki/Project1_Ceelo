@@ -260,6 +260,8 @@ I was able to achieve most of the 2-player functionalities. _However..._
 * Make JS code cleaner and more simple to follow
 * Add animation so dices are actually rolling
 * Add background music
+* Make it a multi-player game (3 players or more)
+* Make it accessible for mobile users and other screens
 
 **References**
 
