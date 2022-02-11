@@ -59,6 +59,7 @@ ___
 
 ![Game Screen When Player 1 Gets Set Point](./READMEimages/player2sturnimg.png)
 
+https://aimeemisaki.github.io/Project1_Ceelo/
 
 ## MVP Goals Reached
 ___
