@@ -2,7 +2,7 @@
 ___
 ## Cee-Lo: The Good Ol' Game of Dice
 ___
-Feeling _**lucky**_, but instead you're stuck at a boring house party, your parents' home or a coworkers' get-together? Wish you had your set of dice on you, but forget them at home? *Look no further!* The timeless game of **Cee-lo** is right at your fingertips. With this two-player game, users can simply click the "Roll dice" button to get a combination of three random numbers. Depending on the combination, users 1) automatically win, 2) automatically lose, 3) get a set point or 4) roll again. 
+Feeling _**lucky**_, but instead you're stuck at a boring house party, your parents' home or a coworkers' get-together? Wish you had your set of dice on you, but forgot them at home? *Look no further!* The timeless game of **Cee-lo** is right at your fingertips. With this two-player game, users can simply click the "Roll dice!" button to get a combination of three random numbers. Depending on the combination, users 1) automatically win, 2) automatically lose, 3) get a set point or 4) roll again. 
 
 **Automatic Win Combinations:**
 * Any double and a 6 (e.g. 3, 3, 6)
@@ -82,26 +82,6 @@ const autoLosingCombos = [
 
 * ✅ Roll again message when players do not roll any automatic win/lose combinations
 * ✅ Message that pops up declaring player has won, lost or must roll again
-
-```javascript
-function gameResult(playNumbers) {
-  if (autoWinningCombos.includes(playNumbers)) {
-    winnerMessage.innerText = currentPlayer + " won!";
-    gameMessage.innerText = "Game Over!";
-    buttonPlay.style.display = "none";
-  } else if (autoLosingCombos.includes(playNumbers)) {
-    winnerMessage.innerText = currentPlayer + " lost!";
-    gameMessage.innerText = "Game Over!";
-    buttonPlay.style.display = "none";
-  } else {
-    gameMessage.innerText = "Roll again!";
-    pointMessage.style.visibility = "hidden";
-  }
-  if (pointMessage.style.visibility == "hidden") {
-    pointMessage.style.visibility = "visible";
-  }
-}
-```
 * ✅ Functional button to roll dice
 
 ```javascript
@@ -117,6 +97,15 @@ buttonPlay.addEventListener("click", function () {
   });
   gameResult(parseInt(playNumbers));
   displayImage();
+  if (currentPlayer === "Player 1") {
+    player1Score(playNumbers);
+  } else if (currentPlayer === "Player 2") {
+    player2Score(playNumbers);
+  }
+  if (player2 > 1) {
+    setpointResults();
+  }
+  playersTurn();
 })
 ```
 
@@ -130,50 +119,50 @@ resetButton.addEventListener("click", function () {
   buttonPlay.style.display = "inline-block";
   gameMessage.innerText = "";
   pointMessage.innerText = "";
-  
+  winnerMessage.innerText = "";
+  playersTurnMessage.innerText = "";
+  player1 = 0;
+  player2 = 0;
+  currentPlayer = "Player 1";
 })
 ```
 
 ## Stretch Goals Reached 
 ___
 * ✅ Make it a 2-person game
-* ✅ Store points for Player 1 and Player 2 (_included set-point conditionals and rendered function to toggle from Player 1 to Player 2_)
+* ✅ Store points for Player 1 and Player 2 (_making conditionals for set-points and ties)_
 
 ```javascript
-// Conditionals for game results extended
+// Conditionals for game results
 
 function gameResult(playNumbers) {
   if (autoWinningCombos.includes(playNumbers)) {
     winnerMessage.innerText = currentPlayer + " won!";
     gameMessage.innerText = "Game Over!";
     buttonPlay.style.display = "none";
+    pointMessage.innerText = "";
+    playersTurnMessage.innerText = "";
+    return;
   } else if (autoLosingCombos.includes(playNumbers)) {
     winnerMessage.innerText = currentPlayer + " lost!";
     gameMessage.innerText = "Game Over!";
     buttonPlay.style.display = "none";
+    pointMessage.innerText = "";
+    playersTurnMessage.innerText = "";
+    return;
   } else if (twoPoints.includes(playNumbers)) {
-    npointResults();
-    playersTurn();
     pointMessage.innerText = "2 points!";
   } else if (twoPoints.includes(playNumbers)) {
-    npointResults();
-    playersTurn();
     pointMessage.innerText = "2 points!";
   } else if (threePoints.includes(playNumbers)) {
-    npointResults();
-    playersTurn();
     pointMessage.innerText = "3 points!";
   } else if (fourPoints.includes(playNumbers)) {
-    npointResults();
-    playersTurn();
     pointMessage.innerText = "4 points!";
   } else if (fivePoints.includes(playNumbers)) {
-    npointResults();
-    playersTurn();
     pointMessage.innerText = "5 points!";
   } else {
     gameMessage.innerText = "Roll again!";
-    pointMessage.style.visibility = "hidden";
+    pointMessage.innerText = "";
   }
   if (pointMessage.style.visibility == "hidden") {
     pointMessage.style.visibility = "visible";
@@ -186,23 +175,21 @@ let player1 = 0;
 let player2 = 0;
 
 // When Player 1 gets set-points
+
 function player1Score(player1Numbers) {
   if (twoPoints.includes(parseInt(player1Numbers))) {
-    console.log("does this work");
     player1 += 2;
   } else if (threePoints.includes(parseInt(player1Numbers))) {
-    console.log("does this work");
     player1 += 3;
   } else if (fourPoints.includes(parseInt(player1Numbers))) {
-    console.log("does this work");
     player1 += 4;
   } else if (fivePoints.includes(parseInt(player1Numbers))) {
-    console.log("does this work");
     player1 += 5;
   }
 }
 
 // When Player 2 gets set-points
+
 function player2Score(player2Numbers) {
   if (twoPoints.includes(parseInt(player2Numbers))) {
     player2 += 2;
@@ -214,33 +201,39 @@ function player2Score(player2Numbers) {
     player2 += 5;
   }
 }
+```
+
+```javascript
+// Conditionals for when Player 1 or Player 2 wins or a Tie occurs
 
 function setpointResults() {
   if (player1 === player2 && player1 > 0 && player2 > 0) {
     winnerMessage.innerText = "Tie!";
-    playersTurnMessage.innerText = "Both roll again!";
+    playersTurnMessage.innerText = "Play again!";
   } else if (player2 > player1) {
     winnerMessage.innerText = "Player 2 wins!";
     gameMessage.innerText = "Game Over";
     buttonPlay.style.display = "none";
+    playersTurnMessage.style.display = "none";
   } else if (player1 > player2) {
     winnerMessage.innerText = "Player 1 wins!";
     gameMessage.innerText = "Game Over";
     buttonPlay.style.display = "none";
+    playersTurnMessage.style.display = "none";
   }
 }
 ```
 
 ```javascript
 // Toggling from Player 1 to Player 2
+
 let currentPlayer = "Player 1";
 function playersTurn() {
-  if (player1 >= 2) {
+  if (player1 > 1) {
     currentPlayer = "Player 2";
-    playersTurnMessage.innerText = "Player 1's turn!";
+    playersTurnMessage.innerText = "Player 2's turn!";
   } else {
     currentPlayer = "Player 1";
-    playersTurnMessage.innerText = "Player 2's turn!";
   }
 }
 ```
@@ -257,12 +250,17 @@ I approached this issue by...
 * Making sure that conditionals for toggling between players were set under my "Play" button which is the main functioning button that affects the game
 
 
-I was able to achieve the player toggling, so player's scores were added correctly. However...
+I was able to achieve most of the 2-player functionalities. _However..._
 
 **Ongoing Bugs**
 * Still unable to not have "2nd player's turn!" dissappear when Player 2 is continuing to roll
 
-**Refactorings**
+**Refactorings in the Future**
+* Make JS code cleaner and more simple to follow
+* Add animation so dices are actually rolling
+* Add background music
 
+**Reference**
 
+[Modal HTML/CSS/JS Code by W3 School](https://www.w3schools.com/howto/howto_css_modals.asp)
 
