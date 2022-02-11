@@ -17,7 +17,7 @@ Feeling _**lucky**_, but instead you're stuck at a boring house party, your pare
 **Set Point Combinations:**
 * A double of any number and any single number (called the **"set point"**)
 
-_This set point (2~5) will be the player's score (2~5 points). For another player to win, they will either have to roll a winning combination OR a double of any number with a set point higher than the other player's._
+_This set point will be the player's score. For another player to win, they will either have to roll a winning combination OR a double of any number with a set point higher than the other player's._
 
 **Roll Again Combinations**
 * Any combination that does not contain a double or a triple 
