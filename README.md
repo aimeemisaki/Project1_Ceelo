@@ -55,7 +55,7 @@ ___
 * Game Screen When Player Must Roll Again
 ![Game Screen When Player Must Roll Again](./READMEimages/rollagainimg.png)
 
-* Game Screen When Player 1 Gets Set Point
+* Game Screen After Player 1 Gets Set Point
 
 ![Game Screen When Player 1 Gets Set Point](./READMEimages/player2sturnimg.png)
 
@@ -260,7 +260,15 @@ I was able to achieve most of the 2-player functionalities. _However..._
 * Add animation so dices are actually rolling
 * Add background music
 
-**Reference**
+**References**
 
-[Modal HTML/CSS/JS Code by W3 School](https://www.w3schools.com/howto/howto_css_modals.asp)
+1. [Modal HTML/CSS/JS Code by W3 School](https://www.w3schools.com/howto/howto_css_modals.asp)
+
+2. [Fist Cursor by Freepik](https://www.flaticon.com/free-icons/fist)
+
+3. [Hand Cursor by Freepik](https://www.flaticon.com/free-icons/hand)
+
+4. [Finger Cursor by Freepik](https://www.flaticon.com/free-icons/finger)
+
+5. [Instructions Icon by Freepik](https://www.flaticon.com/free-icons/instructions)
 

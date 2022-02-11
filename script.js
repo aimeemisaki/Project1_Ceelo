@@ -188,12 +188,12 @@ function setpointResults() {
     winnerMessage.innerText = "Tie!";
     playersTurnMessage.innerText = "Play again!";
   } else if (player2 > player1) {
-    winnerMessage.innerText = "Player 2 wins!";
+    winnerMessage.innerText = "Player 2 won!";
     gameMessage.innerText = "Game Over";
     buttonPlay.style.display = "none";
     playersTurnMessage.style.display = "none";
   } else if (player1 > player2) {
-    winnerMessage.innerText = "Player 1 wins!";
+    winnerMessage.innerText = "Player 1 won!";
     gameMessage.innerText = "Game Over";
     buttonPlay.style.display = "none";
     playersTurnMessage.style.display = "none";
