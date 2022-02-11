@@ -1,115 +1,268 @@
 # Project 1
 ___
-## Cee-Lo 四五六: The Good Ol' Game of Dice
+## Cee-Lo: The Good Ol' Game of Dice
 ___
-Feeling _**lucky**_, but instead you're stuck at a boring house party, your parents' house or a coworkers' get-together? Wish you had your set of dice on you, but forget them at home? *Look no further!* The timeless game of **Cee-lo** is right at your fingertips. Roll away! 
+Feeling _**lucky**_, but instead you're stuck at a boring house party, your parents' home or a coworkers' get-together? Wish you had your set of dice on you, but forget them at home? *Look no further!* The timeless game of **Cee-lo** is right at your fingertips. With this two-player game, users can simply click the "Roll dice" button to get a combination of three random numbers. Depending on the combination, users 1) automatically win, 2) automatically lose, 3) get a set point or 4) roll again. 
 
+**Automatic Win Combinations:**
+* Any double and a 6 (e.g. 3, 3, 6)
+* A triple 6 (i.e. 6, 6, 6)
+* 4, 5, 6
+
+**Automatic Lose Combinations:**
+* Any double and a 1 (e.g. 3, 3, 1)
+* A triple 1
+* 1, 2, 3 
+
+**Set Point Combinations:**
+* A double of any number and any single number (called the **"set point"**)
+
+_This set point (2~5) will be the player's score (2~5 points). For another player to win, they will either have to roll a winning combination OR a double of any number with a set point higher than the other player's._
+
+**Roll Again Combinations**
+* Any combination that does not contain a double or a triple 
+
+_Players will roll again until they roll one of the three combinations above._
 
 ## Tech Stack
 ___
 * HTML/CSS 
 * Javascript - _**DOM**_
-* *Using DOM manipulation, I will...*
-* create a function that includes an event listener for when the buttons are clicked so that...
 
-
-→ 'game start' button on the start screen makes the start screen dissappear and opens the game screen
-
-→ 'reset' button on the game screen clears the text on the dice
-
-
-→'roll dice' button on the game screen starts the random number generator and displays those numbers on the dice
-* use array method to define winning combinations, losing combinations, and roll-again combinations
-* for loops with if/else if/else combinations to determine what happens when player wins, loses or has to roll again
-
-
-→ use innerText to display message (i.e. "You won!", "You lose!", "Roll again!")
-
-
-→ automatically clear text (aka invoke reset function) when player must roll again
-
-
-**Button will make random integers (1~6) appear on the 3 dices:
-```javascript 
-function diceNum(min, max) {
-    min = Math.ceil(1);
-    max = Math.floor(6);
-    return Math.floor(Math.random() * (max - min + 1) + min)
-}
-console.log(diceNum)
-
-
-const buttonPlay = document.querySelector(".gs-roll-button")
-buttonPlay.addEventListener('click', function(){
-    dices.forEach(function(dice) {
-        dice.innerText = diceNum();
-    })  
-    let playNumbers = []
-    dices.forEach(function(dice) {
-        playNumbers.push(parseInt(dice.innerText))
-    })
-    gameResult(playNumbers)
-})
-```
-
-List of conditions determining wins/losses/roll-agains and the resulting message that shows up:
-```javascript
-const winningCombos = [
-    [1,1,6],
-    [2, 2, 6],
-    [3, 3, 6],
-    [4, 4, 6],
-    [5, 5, 6],
-    [4, 5, 6],
-    [6, 6, 6]
-] 
-
-const losingCombos = [
-    [1, 1, 1],
-    [2, 2, 1],
-    [3, 3, 1],
-    [4, 4, 1],
-    [5, 5, 1],
-    [6, 6, 1],
-    [1, 2, 3]
-]
-
-const gameResult = (playNumbers) => {
-    if (winningCombos.includes(playNumbers)) {
-        gameMessage.innerText = "You won!"
-        dices.innerText = ""
-    } else if (losingCombos.includes(playNumbers)) {
-        gameMessage.innerText = "You lost!"
-        dices.innerText = ""
-    } else {
-        gameMessage.innerText = "Roll again!"
-        dices.innerText =""
-    }
-}
-```
-
-## Wireframes
+## Wireframes & Flowchart
 ___
 * Start Screen / Instructions 
 
-![Start Screen](./Wireframe_Draft_StartScreen.jpg)
+![Start Screen](./READMEimages/Wireframe_Draft_StartScreen.jpg)
 
 * Playing Screen
 
-![Game Screen](./Wireframe_Draft_GameScreen.jpg)
+![Game Screen](./READMEimages/Wireframe_Draft_GameScreen.jpg)
 
-## MVP Goals
-___
-* Render start screen that displays instructions that disasapears after clicking button to go to game screen
-* Render game screen with 3 dices
-* Render 3 random number generators (text inserted) for the dices that are being rolled
-* Create conditional combinations for automatic win, automatic loss and roll again
-* Automatically reset game when player must roll again
-* Functional buttons to start and reset game
-* Message that pops up declaring player has won, lost or must roll again
+* Flowchart (Planning Document)
+![FlowChart](./READMEimages/flowchart.jpg)
+## Screenshots of Actual Game
 
-## Stretch Goals 
 ___
-* Add animation for dice roll
-* Make it a 2-person game
-* Store points for Player 1 and Player 2
+* Start Screen Modal With Instructions
+
+![Start Screen](./READMEimages/startscreenimg.png)
+
+* Game Screen Pre-Roll
+
+![Game Screen Pre-Roll](./READMEimages/gamescreenimg.png)
+
+* Game Screen When Player Must Roll Again
+![Game Screen When Player Must Roll Again](./READMEimages/rollagainimg.png)
+
+* Game Screen When Player 1 Gets Set Point
+
+![Game Screen When Player 1 Gets Set Point](./READMEimages/player2sturnimg.png)
+
+
+## MVP Goals Reached
+___
+* ✅ Render start screen/modal that displays instructions that disasapears after clicking exit button to go to game screen (_Extra: 1. users can also click outside of modal to exit to game screen and 2. created an "Instructions" button on game screen that allows users to return to start screen/modal_)
+* ✅ Render game screen with 3 dices
+* ✅ Render random number generator (text inserted) for the dices that are being rolled (_Extra: numbers are assigned to dice images_)
+* ✅ Create conditional combinations for automatic win, automatic loss and roll again (_Extra: created conditionals for when players get n-points for 2-player game_)
+
+```javascript
+const autoWinningCombos = [
+  116, 161, 611, 226, 262, 622, 336, 363, 633, 446, 464, 644, 556, 565, 655,
+  456, 654, 546, 645, 564, 465, 666,
+];
+
+const autoLosingCombos = [
+  111, 221, 212, 122, 331, 313, 133, 441, 414, 144, 551, 515, 155, 661, 616,
+  166, 123, 231, 321, 312, 213, 132,
+];
+
+```
+
+* ✅ Roll again message when players do not roll any automatic win/lose combinations
+* ✅ Message that pops up declaring player has won, lost or must roll again
+
+```javascript
+function gameResult(playNumbers) {
+  if (autoWinningCombos.includes(playNumbers)) {
+    winnerMessage.innerText = currentPlayer + " won!";
+    gameMessage.innerText = "Game Over!";
+    buttonPlay.style.display = "none";
+  } else if (autoLosingCombos.includes(playNumbers)) {
+    winnerMessage.innerText = currentPlayer + " lost!";
+    gameMessage.innerText = "Game Over!";
+    buttonPlay.style.display = "none";
+  } else {
+    gameMessage.innerText = "Roll again!";
+    pointMessage.style.visibility = "hidden";
+  }
+  if (pointMessage.style.visibility == "hidden") {
+    pointMessage.style.visibility = "visible";
+  }
+}
+```
+* ✅ Functional button to roll dice
+
+```javascript
+const buttonPlay = document.querySelector(".gs-roll-button");
+buttonPlay.addEventListener("click", function () {
+  dices.forEach(function (dice) {
+    dice.innerText = diceNum();
+  });
+  gameMessage.innerText = "";
+  let playNumbers = "";
+  dices.forEach(function (dice) {
+    playNumbers += dice.innerText;
+  });
+  gameResult(parseInt(playNumbers));
+  displayImage();
+})
+```
+
+* ✅ Functional reset button
+
+```javascript
+resetButton.addEventListener("click", function () {
+  dices.forEach(function (dice) {
+    dice.style.backgroundImage = "none";
+  });
+  buttonPlay.style.display = "inline-block";
+  gameMessage.innerText = "";
+  pointMessage.innerText = "";
+  
+})
+```
+
+## Stretch Goals Reached 
+___
+* ✅ Make it a 2-person game
+* ✅ Store points for Player 1 and Player 2 (_included set-point conditionals and rendered function to toggle from Player 1 to Player 2_)
+
+```javascript
+// Conditionals for game results extended
+
+function gameResult(playNumbers) {
+  if (autoWinningCombos.includes(playNumbers)) {
+    winnerMessage.innerText = currentPlayer + " won!";
+    gameMessage.innerText = "Game Over!";
+    buttonPlay.style.display = "none";
+  } else if (autoLosingCombos.includes(playNumbers)) {
+    winnerMessage.innerText = currentPlayer + " lost!";
+    gameMessage.innerText = "Game Over!";
+    buttonPlay.style.display = "none";
+  } else if (twoPoints.includes(playNumbers)) {
+    npointResults();
+    playersTurn();
+    pointMessage.innerText = "2 points!";
+  } else if (twoPoints.includes(playNumbers)) {
+    npointResults();
+    playersTurn();
+    pointMessage.innerText = "2 points!";
+  } else if (threePoints.includes(playNumbers)) {
+    npointResults();
+    playersTurn();
+    pointMessage.innerText = "3 points!";
+  } else if (fourPoints.includes(playNumbers)) {
+    npointResults();
+    playersTurn();
+    pointMessage.innerText = "4 points!";
+  } else if (fivePoints.includes(playNumbers)) {
+    npointResults();
+    playersTurn();
+    pointMessage.innerText = "5 points!";
+  } else {
+    gameMessage.innerText = "Roll again!";
+    pointMessage.style.visibility = "hidden";
+  }
+  if (pointMessage.style.visibility == "hidden") {
+    pointMessage.style.visibility = "visible";
+  }
+}
+```
+
+```javascript
+let player1 = 0;
+let player2 = 0;
+
+// When Player 1 gets set-points
+function player1Score(player1Numbers) {
+  if (twoPoints.includes(parseInt(player1Numbers))) {
+    console.log("does this work");
+    player1 += 2;
+  } else if (threePoints.includes(parseInt(player1Numbers))) {
+    console.log("does this work");
+    player1 += 3;
+  } else if (fourPoints.includes(parseInt(player1Numbers))) {
+    console.log("does this work");
+    player1 += 4;
+  } else if (fivePoints.includes(parseInt(player1Numbers))) {
+    console.log("does this work");
+    player1 += 5;
+  }
+}
+
+// When Player 2 gets set-points
+function player2Score(player2Numbers) {
+  if (twoPoints.includes(parseInt(player2Numbers))) {
+    player2 += 2;
+  } else if (threePoints.includes(parseInt(player2Numbers))) {
+    player2 += 3;
+  } else if (fourPoints.includes(parseInt(player2Numbers))) {
+    player2 += 4;
+  } else if (fivePoints.includes(parseInt(player2Numbers))) {
+    player2 += 5;
+  }
+}
+
+function setpointResults() {
+  if (player1 === player2 && player1 > 0 && player2 > 0) {
+    winnerMessage.innerText = "Tie!";
+    playersTurnMessage.innerText = "Both roll again!";
+  } else if (player2 > player1) {
+    winnerMessage.innerText = "Player 2 wins!";
+    gameMessage.innerText = "Game Over";
+    buttonPlay.style.display = "none";
+  } else if (player1 > player2) {
+    winnerMessage.innerText = "Player 1 wins!";
+    gameMessage.innerText = "Game Over";
+    buttonPlay.style.display = "none";
+  }
+}
+```
+
+```javascript
+// Toggling from Player 1 to Player 2
+let currentPlayer = "Player 1";
+function playersTurn() {
+  if (player1 >= 2) {
+    currentPlayer = "Player 2";
+    playersTurnMessage.innerText = "Player 1's turn!";
+  } else {
+    currentPlayer = "Player 1";
+    playersTurnMessage.innerText = "Player 2's turn!";
+  }
+}
+```
+
+## Approach, Ongoing Bugs & Refactorings
+___
+
+While I was able to reach my MVP goals without any major roadblocks, when I began to try to make the game a 2-player game, I soon realized, while going through the possible conditionals (set-points and ties), that this was much a harder task than I had expected. This was really my major roadblock.
+
+I approached this issue by...
+* Storing the two players' scores in seperate functions
+* Creating a seperate set of conditionals for when Player 1 had a higher set-point than Player 2 and vice versa, as well as when they reached a tie in set-points
+* Creating more HTML tags for different messages (declaring 1. points, 2. winners, 3. game statuses and 4. whose turn it was). 
+* Making sure that conditionals for toggling between players were set under my "Play" button which is the main functioning button that affects the game
+
+
+I was able to achieve the player toggling, so player's scores were added correctly. However...
+
+**Ongoing Bugs**
+* Still unable to not have "2nd player's turn!" dissappear when Player 2 is continuing to roll
+
+**Refactorings**
+
+
+

@@ -3,10 +3,10 @@
  /* <a href="https://www.flaticon.com/free-icons/finger" title="finger icons">Finger icons created by Freepik - Flaticon</a> */
 /* <a href="https://www.flaticon.com/free-icons/instructions" title="instructions icons">Instructions icons created by Freepik - Flaticon</a> */
  body {
-    background-image: url('./dicebackground1.png');
+    background-image: url('./images/dicebackground1.png');
     text-align: center;
     font-family: 'Press Start 2P', cursive;
-    cursor: url('./fistcursor.png'), auto;
+    cursor: url('./images/fistcursor.png'), auto;
 }
 .gs-main-container {
     position: absolute;
@@ -73,7 +73,7 @@
   .close:focus {
     color: darkred;
     text-decoration: none;
-    cursor: url('./pointcursor.png'), auto;
+    cursor: url('./images/pointcursor.png'), auto;
   }
 
 .gs-modal-button {
@@ -87,7 +87,7 @@
     color: red;
     text-shadow: 2px 2px 5px black;
     box-shadow: 10px 10px 5px black;
-    cursor: url('./instructionscursor.png'), auto;
+    cursor: url('./images/instructionscursor.png'), auto;
 }
 
 .gs-h1 {
@@ -96,11 +96,7 @@
     text-shadow: 2px 2px 5px red;
 }
 
-.points-msg {
-    text-shadow: 2px 2px 5px red;
-}
-
-.gs-msg {
+.msg {
     text-shadow: 2px 2px 5px red;
 }
 
@@ -113,7 +109,7 @@
     color: red;
     text-shadow: 2px 2px 5px black;
     box-shadow: 10px 10px 5px black;
-    cursor: url('./handcursor.png'), auto;
+    cursor: url('./images/handcursor.png'), auto;
 }
 
 .gs-reset-button {
@@ -125,6 +121,6 @@
     text-shadow: 2px 2px 5px black;
     font-size: 15px;
     box-shadow: 10px 10px 5px black;
-    cursor: url('./pointcursor.png'), auto;
+    cursor: url('./images/pointcursor.png'), auto;
 
 }

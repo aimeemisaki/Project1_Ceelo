@@ -13,7 +13,6 @@
     <title>Cee-Lo: The Good Ol' Game of Dice</title>
 </head>
 <body>
-<embed src="/game-music.mp3" loop="true" autostart="true" width="2" height="0">
 <div class="modal">
     <div class="modal-content">
           <span class="close">&times;</span>
@@ -37,6 +36,9 @@
             🎲 A triple 1<br>
             🎲 1, 2, 3<br>
             <br>
+           <div class="ss-title">Set Points</div> <br>
+            If Player 1 rolls a double of any number and another number, that single number will be their "set point" AKA their score (2~5 pts). For Player 2 to win, they must either roll one of the winning combinations or a double of any number and a set point higher than Player 1's. <br>
+            <br>
             Until then... <i>Keep on rolling! </i>
         </p>
           
@@ -57,16 +59,16 @@
         <div id="2" class="square"></div>
     </div>
     <div class ="points-container"> 
-        <h2 class = "points-msg"></h2>
+        <h2 class="msg" id="points-msg"></h2>
     </div>
     <div class= "gs-playersturn-container">
-        <h2 class="playersturn-msg"></h2>
+        <h2 class="msg" id="playersturn-msg"></h2>
     </div>
     <div class= "game-msg-container">
-        <h2 class="game-msg"></h2>
+        <h2 class="msg" id="game-msg"></h2>
     </div>
     <div class = "winner-msg-container">
-        <h2 class = "winner-msg"></h2>
+        <h2 class="msg" id="winner-msg"></h2>
     </div>
     <button class ="gs-reset-button" id="reset-button">Reset</button>
 </div>

@@ -1,20 +1,20 @@
 const closeButton = document.querySelector(".close");
 const modal = document.querySelector(".modal");
 const modalButton = document.querySelector(".gs-modal-button");
-const gameMessage = document.querySelector(".game-msg");
-const pointMessage = document.querySelector(".points-msg");
-const playersTurnMessage = document.querySelector(".playersturn-msg");
-const winnerMessage = document.querySelector(".winner-msg");
+const gameMessage = document.querySelector("#game-msg");
+const pointMessage = document.querySelector("#points-msg");
+const playersTurnMessage = document.querySelector("#playersturn-msg");
+const winnerMessage = document.querySelector("#winner-msg");
 const dices = document.querySelectorAll(".square");
 const resetButton = document.querySelector("#reset-button");
 
 const images = [
-  "./dice1img.jpg",
-  "./dice2img.jpg",
-  "./dice3img.jpg",
-  "./dice4img.jpg",
-  "./dice5img.jpg",
-  "./dice6img.jpg",
+  "./images/dice1img.jpg",
+  "./images/dice2img.jpg",
+  "./images/dice3img.jpg",
+  "./images/dice4img.jpg",
+  "./images/dice5img.jpg",
+  "./images/dice6img.jpg",
 ];
 
 // Start Screen/Modal Close Button
@@ -57,6 +57,10 @@ buttonPlay.addEventListener("click", function () {
   } else if (currentPlayer === "Player 2") {
     player2Score(playNumbers);
   }
+  if (player2 > 1) {
+      setpointResults()
+  }
+playersTurn()
 });
 
 // Number to Image Conversion
@@ -119,33 +123,29 @@ function gameResult(playNumbers) {
     winnerMessage.innerText = currentPlayer + " won!";
     gameMessage.innerText = "Game Over!";
     buttonPlay.style.display = "none";
+    pointMessage.innerText = ""
+    playersTurnMessage.innerText = ""
+    return
   } else if (autoLosingCombos.includes(playNumbers)) {
     winnerMessage.innerText = currentPlayer + " lost!";
     gameMessage.innerText = "Game Over!";
     buttonPlay.style.display = "none";
+    pointMessage.innerText = ""
+    playersTurnMessage.innerText = ""
+    return
   } else if (twoPoints.includes(playNumbers)) {
-    npointResults();
-    playersTurn();
     pointMessage.innerText = "2 points!";
   } else if (twoPoints.includes(playNumbers)) {
-    npointResults();
-    playersTurn();
     pointMessage.innerText = "2 points!";
   } else if (threePoints.includes(playNumbers)) {
-    npointResults();
-    playersTurn();
     pointMessage.innerText = "3 points!";
   } else if (fourPoints.includes(playNumbers)) {
-    npointResults();
-    playersTurn();
     pointMessage.innerText = "4 points!";
   } else if (fivePoints.includes(playNumbers)) {
-    npointResults();
-    playersTurn();
     pointMessage.innerText = "5 points!";
   } else {
     gameMessage.innerText = "Roll again!";
-    pointMessage.style.visibility = "hidden";
+    pointMessage.innerText = ""
   }
   if (pointMessage.style.visibility == "hidden") {
     pointMessage.style.visibility = "visible";
@@ -155,7 +155,7 @@ function gameResult(playNumbers) {
 let player1 = 0;
 let player2 = 0;
 
-// when player 1 gets n-points
+// when player 1 gets set-points
 function player1Score(player1Numbers) {
   if (twoPoints.includes(parseInt(player1Numbers))) {
     console.log("does this work");
@@ -169,10 +169,9 @@ function player1Score(player1Numbers) {
   } else if (fivePoints.includes(parseInt(player1Numbers))) {
     console.log("does this work");
     player1 += 5;
-  }
+  } console.log("this is player1", player1)
 }
 
-// when player 2 gets n-points
 function player2Score(player2Numbers) {
   if (twoPoints.includes(parseInt(player2Numbers))) {
     player2 += 2;
@@ -182,34 +181,36 @@ function player2Score(player2Numbers) {
     player2 += 4;
   } else if (fivePoints.includes(parseInt(player2Numbers))) {
     player2 += 5;
-  }
+  } console.log("this is player2", player2)
 }
 
 // From Player 1 to Player 2
 let currentPlayer = "Player 1";
 function playersTurn() {
-  if (player1 >= 2) {
+  if (player1 > 1) {
     currentPlayer = "Player 2";
-    playersTurnMessage.innerText = "Player 1's turn!";
+    console.log(currentPlayer)
+    playersTurnMessage.innerText = "Player 2's turn!";
   } else {
     currentPlayer = "Player 1";
-    playersTurnMessage.innerText = "Player 2's turn!";
   }
 }
 console.log(currentPlayer);
 
-function npointResults() {
+function setpointResults() {
   if (player1 === player2 && player1 > 0 && player2 > 0) {
     winnerMessage.innerText = "Tie!";
-    playersTurnMessage.innerText = "Both roll again!";
+    playersTurnMessage.innerText = "Play again!";
   } else if (player2 > player1) {
     winnerMessage.innerText = "Player 2 wins!";
     gameMessage.innerText = "Game Over";
     buttonPlay.style.display = "none";
+    playersTurnMessage.style.display = "none"
   } else if (player1 > player2) {
     winnerMessage.innerText = "Player 1 wins!";
     gameMessage.innerText = "Game Over";
     buttonPlay.style.display = "none";
+    playersTurnMessage.style.display = "none";
   }
 }
 
@@ -221,5 +222,10 @@ resetButton.addEventListener("click", function () {
   buttonPlay.style.display = "inline-block";
   gameMessage.innerText = "";
   pointMessage.innerText = "";
+  winnerMessage.innerText = "";
+  playersTurnMessage.innerText = "";
+  player1 = 0
+  player2 = 0
+  currentPlayer = "Player 1"
   
 });
